@@ -10,7 +10,7 @@
 	* `./download_pytorch_and_build_docker.sh`
 	* `docker exec -it <name_of_container> bash`
 * :cloud: Google Colab (No GPU required): 
-	* [Interactive Python Notebook](https://github.com/rbpgXCV/gpu_programming_tutorials/p1_setup/cuda_starter.ipynb)
+	* [Interactive Python Notebook](https://github.com/rbpgXCV/gpu_programming_tutorials/blob/main/p1_setup/cuda_starter.ipynb)
 
 ## :raised_back_of_hand:Question/Comments
 Resources for doubts or general comments:
