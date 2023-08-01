@@ -1,0 +1,46 @@
+# Docker Compose file for GPU Programming Tutorial Examples
+#
+# Usage:
+#
+# To build the images:
+#   docker compose build
+
+# To open an interactive shell to a running container:
+#   docker exec -it <container_name> bash
+services:
+  # Base image containing dependencies.
+  base:
+    image: gpu_tutorial:base
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: base
+      args:
+        USER_UID: ${USER_UID}
+        USER_GID: ${USER_GID}
+        HOME_DIR: ${HOME}
+    runtime: nvidia
+    # Interactive shell
+    stdin_open: true
+    tty: true
+    # Networking
+    network_mode: host
+    ipc: host
+    # Allows graphical programs in the container.
+    environment:
+    - DISPLAY=${DISPLAY}
+    - QT_X11_NO_MITSHM=1
+    - NVIDIA_VISIBLE_DEVICES= all
+    - NVIDIA_DRIVER_CAPABILITIES=all
+    - XAUTHORITY=${XAUTHORITY}
+    volumes:
+    # Mount the source code
+    - .:/gpu_tutorial_ws
+    # Allows graphical programs in the container.
+    - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    - /var/run/docker.sock:/var/run/docker.sock
+    - $HOME/.ssh:$HOME/.ssh
+    - $HOME/.Xauthority:$HOME/.Xauthority:rw
+    - /dev/dri:/dev/dri
+    command: sleep infinity
+  
