@@ -10,7 +10,7 @@ unzip libtorch-cxx11*
 rm -rf libtorch-cxx11*
 
 # make lib folder
-mkdir -p build
+mkdir -p lib
 
 # move libtorch to lib folder 
 mv libtorch lib/
